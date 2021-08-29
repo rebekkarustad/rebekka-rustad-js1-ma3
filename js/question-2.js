@@ -28,12 +28,22 @@ const url = "https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=
 
 const gameContainer = document.querySelector(".container");
 
+const loader = document.querySelector(".loader");
+
 function createHTML(games) {
     const content = games.all;
 
     gameContainer.innerHTML = "";
 
         for (let i = 0; i < games.length; i++) {
+
+            var item = games[i];
+                console.log(item.name);
+
+                console.log(item.rating);
+
+                console.log(item.tags);
+
 
             if (i === 8) {
                 break;
@@ -53,8 +63,9 @@ async function getGames() {
 
         createHTML(content);
 
-    } catch (error) {
-        resultsContainer.innerHTML = displayError("An error has occurred");
+    } catch(error) {
+        console.log("error occurred");
+        loader.innerHTML = "Nah there was an error!";
     }
 }
 
